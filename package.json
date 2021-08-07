@@ -1,0 +1,52 @@
+{
+  "name": "e1pagegen",
+  "version": "0.0.1",
+  "description": "A E1 Page Generator",
+  "productName": "E1PageGen",
+  "author": "floki1250 <d.adem1250@gmail.com>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@electron/remote": "^1.2.1",
+    "@quasar/cli": "^1.2.1",
+    "@quasar/extras": "^1.0.0",
+    "assert": "^2.0.0",
+    "constants": "0.0.2",
+    "core-js": "^3.6.5",
+    "crypto": "^1.0.1",
+    "fs": "0.0.1-security",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
+    "quasar": "^2.0.0",
+    "stream": "0.0.2",
+    "util": "^0.12.4"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.13.14",
+    "@quasar/app": "^3.0.0",
+    "electron": "^13.1.7",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^7.0.0",
+    "eslint-webpack-plugin": "^2.4.0"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 12.22.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

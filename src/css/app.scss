@@ -1,0 +1,53 @@
+// app global css in SCSS form
+@import url("https://fonts.googleapis.com/css2?family=Style+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+    transition: Background 1s;
+    font-family: "Montserrat", sans-serif;
+}
+.widget {
+    background: rgba(255, 255, 255, 0.4);
+    height: 500px;
+    margin: 10px;
+    border-radius: 20px;
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 500px;
+}
+.widget:hover {
+    transition: ease-in-out;
+    background: #3847A5;
+    width: 505px;
+}
+.q-electron-drag:hover  {
+    background: #4A5ED9;
+}
+
+.fluent {
+    background-color: rgba(#303D8D, 0.6);
+    box-shadow: 0 0 3px rgba(#000, 0.3);
+    backdrop-filter: blur(5px);
+}
+.fluent-white {
+    background-color: rgba(rgb(255, 255, 255), 0.9);
+    box-shadow: 0 0 3px rgba(#000, 0.3);
+    backdrop-filter: blur(50px);
+    color: rgb(0, 0, 0);
+}
+.btn {
+    width: 100%;
+    height: 100%;
+}
+body {
+    background-color: rgba(rgb(14, 18, 43), 0.8);
+    backdrop-filter: blur(18px);
+}
+.title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #ffffff;
+    padding-left: 10px;
+}
+
