@@ -1,4 +1,4 @@
-import { app, BrowserWindow, nativeTheme,dialog } from 'electron'
+import { app, BrowserWindow, nativeTheme, dialog } from 'electron'
 import path from 'path';
 import { initialize } from '@electron/remote/main'
 import fs from 'fs'
@@ -12,18 +12,18 @@ try {
 
 let mainWindow
 
-function createWindow () {
- 
+function createWindow() {
+
   /**
    * Initial window options
    */
   mainWindow = new BrowserWindow({
     frame: true,
     transparent: true,
-    width: 900,
-    height: 560,
+    width: 800,
+    height: 510,
     draggable: true,
-    resizable: false,
+    resizable: true,
     useContentSize: true,
     webPreferences: {
       nativeWindowOpen: true,
@@ -34,7 +34,7 @@ function createWindow () {
       preload: path.resolve(__dirname, process.env.QUASAR_ELECTRON_PRELOAD)
     }
   })
-  //mainWindow.setMenu(null)
+ // mainWindow.setMenu(null)
 
 
   mainWindow.loadURL(process.env.APP_URL)
@@ -52,7 +52,7 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
- 
+
 }
 
 app.on('ready', createWindow)

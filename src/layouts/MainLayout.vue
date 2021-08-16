@@ -2,13 +2,32 @@
   <div class="title">E1 Page Generators</div>
 
   <div class="row" style="padding: 50px">
+    <!-- widget 1 : Open File -->
     <div class="widget fluent">
-        <q-file rounded outlined v-model="model" label="Pick File" color="indigo" bg-color="white" style="width:480px"><template v-slot:after>
-          <q-btn round dense flat icon="las la-file-import" size="20px" color="white"/>
-        <p style="background:white">File Here</p>
-        </template></q-file>
-        
+      <q-file
+        rounded
+        outlined
+        v-model="model"
+        label="Pick File"
+        color="indigo"
+        bg-color="white"
+        style="width: 480px"
+        @change="loadTextFromFile"
+        ><template v-slot:after>
+          <q-btn
+            round
+            dense
+            flat
+            icon="las la-file-import"
+            size="20px"
+            color="white"
+            v-model="model"
+          />
+          <br /> </template
+      ></q-file>
+      <p class="file_holder">{{ Files }}</p>
     </div>
+    <!-- Widget 2 : Create File -->
     <div class="widget fluent">
       <q-btn
         icon="las la-plus-square"
@@ -106,7 +125,6 @@
 </template>
 
 <script>
-
 var data = "";
 var i = 1;
 var j = 0;
@@ -152,6 +170,8 @@ export default {
       Title: "",
       id: "",
       name: "",
+      model: "",
+      Files: [],
     };
   },
   methods: {
@@ -217,16 +237,14 @@ export default {
       this.writeToFileSync("E1XX.dat", data);
       console.log(data);
     },
-  },
-
-  setup() {
-    function open() {
-      const dialog = window.require("electron");
-      console.log(
-        dialog.showOpenDialog({ properties: ["openFile", "multiSelections"] })
-      );
-    }
-    return { open };
+    loadTextFromFile() {
+      const reader = new FileReader();
+      reader.readAsText(this.model);
+      reader.onload = (res) => {
+        console.log(res.target.result);
+        this.Files = res.target.result;
+      };
+    },
   },
 };
 </script>
