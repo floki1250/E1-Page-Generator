@@ -20,8 +20,8 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     frame: true,
     transparent: true,
-    width: 800,
-    height: 510,
+    width: 400,
+    height: 600,
     draggable: true,
     resizable: true,
     useContentSize: true,

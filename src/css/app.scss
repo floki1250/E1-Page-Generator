@@ -6,13 +6,39 @@
     font-family: "Montserrat", sans-serif;
 }
 .file_holder {
-    position: relative;
-    padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px ;
     margin-left: 10px;
     width: 280px;
     height: 200px;
     background-color: white;
+    padding: 10px;
+    resize: none;
+    border: 2px;
+    overflow: auto;
+    outline: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+   
+    border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #1f285c;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ffbb00;
 }
 .widget {
     background: rgba(255, 255, 255, 0.4);
@@ -26,9 +52,10 @@
 }
 .widget:hover {
     transition: 1s;
-    background: #3847a5;
-    width: 305px;
-    height: 305px;
+    background: #1976d2;
+    box-shadow: 0 0 10px rgba(rgb(187, 187, 187), 0.5);
+    width: 300.5px;
+    height: 300.5px;
 }
 .q-electron-drag:hover {
     background: #4a5ed9;
@@ -52,7 +79,8 @@
 body {
     background-color: rgba(rgb(14, 18, 43), 0.8);
     backdrop-filter: blur(18px);
-    height: 510px;
+    box-sizing: border-box;
+    width: 100%;
 }
 .title {
     font-family: "Montserrat", sans-serif;

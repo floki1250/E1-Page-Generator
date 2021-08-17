@@ -1,31 +1,43 @@
 <template>
   <div class="title">E1 Page Generators</div>
 
-  <div class="row" style="padding: 50px">
+  <div class="row" style="padding: 50px 0px 50px 100px">
     <!-- widget 1 : Open File -->
     <div class="widget fluent">
       <q-file
         rounded
         outlined
         v-model="model"
-        label="Pick File"
+        label="Pick File .dat File"
         color="indigo"
-        bg-color="white"
-        style="width: 480px"
+        bg-color="grey-1"
+        style="margin: 10px; width: 480px"
+        dense
         @change="loadTextFromFile"
-        ><template v-slot:after>
+        accept=".Dat"
+        ><template v-slot:append>
           <q-btn
             round
             dense
             flat
             icon="las la-file-import"
             size="20px"
-            color="white"
+            color="indigo-10"
             v-model="model"
           />
           <br /> </template
       ></q-file>
-      <p class="file_holder">{{ Files }}</p>
+
+      <textarea
+        rows="2"
+        cols="20"
+        wrap="hard"
+        v-model="Files"
+        class="file_holder"
+        readonly
+        autofocus
+        placeholder="File Here..."
+      ></textarea>
     </div>
     <!-- Widget 2 : Create File -->
     <div class="widget fluent">
@@ -50,7 +62,7 @@
           <q-btn flat round dense icon="close" v-close-popup />
         </q-toolbar>
 
-        <q-card-section>
+        <q-card-section class="row items-center">
           <div style="padding: 10px">
             <q-input type="text" label="Title" v-model="Title" color="indigo" />
             <q-input
@@ -102,24 +114,93 @@
                 style="margin: 50px"
                 rounded
                 @click="add"
-                >Add</q-btn
               >
-              <strong>{{ count }} lines Added</strong>
+                <q-badge color="red" :label="count" floating />
+              </q-btn>
+
               <q-btn
                 color="indigo"
-                icon="check"
-                label="Create"
+                icon="las la-angle-right"
                 style="margin: 30px"
                 rounded
-                @click="CreateFile"
+                @click="Section = !Section"
               />
             </div>
           </div>
         </q-card-section>
       </q-card>
+      <q-dialog v-model="Section">
+        <q-card class="fluent-white" style="width: 100%">
+          <q-toolbar>
+            <q-toolbar-title
+              ><span class="text-weight-bold">Add Sections</span>
+            </q-toolbar-title>
+
+            <q-btn flat round dense icon="close" v-close-popup />
+          </q-toolbar>
+          <q-card-section>
+            <strong
+              >Section
+              <q-badge color="indigo" :label="SectionCounter" /> :</strong
+            >
+
+            <q-input
+              type="text"
+              label="Section Name"
+              color="indigo"
+              v-model="SectionName"
+            >
+            </q-input>
+
+            <q-select
+              flat
+              multiple
+              :options="selectedopt"
+              counter
+              v-model="selectedoptSections[line]"
+              behavior="menu"
+              style="width: 100%; padding-top: 20px"
+              color="indigo"
+              v-for="line in lines"
+              v-bind:key="line"
+              map-options
+              use-chips
+              emit-value
+              ><template v-slot:after>
+                <q-btn
+                  color="indigo"
+                  icon="las la-plus"
+                  rounded
+                  @click="AddLine" />
+                <q-btn
+                  color="indigo"
+                  icon="las la-minus"
+                  rounded
+                  @click="RemoveLine" /></template
+            ></q-select>
+            <div>
+              <q-btn
+                color="indigo"
+                icon="las la-plus"
+                style="margin: 30px"
+                rounded
+                @click="AddSection"
+                label="Add Section"
+              ></q-btn>
+              <q-btn
+                color="indigo"
+                icon="las la-file"
+                rounded
+                @click="CreateFile"
+                label="Create File"
+              />
+            </div>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
     </q-dialog>
   </div>
-  <div>
+  <div style="position: fixed; top: 90%; left: 85%; z-index: 1000">
     <q-btn color="primary" icon="las la-info-circle" flat size="lg" round />
   </div>
 </template>
@@ -129,6 +210,11 @@ var data = "";
 var i = 1;
 var j = 0;
 var T = [];
+var part2 = "" ;
+var lines = [[]];
+var selectedoptcount = 1;
+var linepart = "";
+var part1 = "";
 export default {
   data() {
     return {
@@ -164,6 +250,7 @@ export default {
       ],
       alphabet: "",
       create: false,
+      Section: false,
       type: "AppId",
       Version: "",
       Window: "",
@@ -172,9 +259,51 @@ export default {
       name: "",
       model: "",
       Files: [],
+      selectedopt: [
+        {
+          label: "",
+          value: "",
+        },
+      ],
+      selectedoptSections: [],
+      Sections: [],
+      SectionCounter: 1,
+      SectionName: "",
+      LineSection: "",
+      lines: 1,
+      line: 1,
     };
   },
   methods: {
+    RemoveLine() {
+      this.line--;
+      this.lines--;
+      if (this.lines < 1) {
+        this.line++;
+        this.lines++;
+      }
+    },
+    AddLine() {
+      lines[[this.SectionCounter][this.line]] = this.selectedoptSections[
+        this.line
+      ]
+        .toString()
+        .split(",");
+      console.log("Section Counter : " + this.SectionCounter);
+      console.log("Line : " + this.line);
+      console.log(lines[[this.SectionCounter][this.line]] + "\n");
+      this.line++;
+      this.lines++;
+    },
+    AddSection() {
+      
+      this.SectionCounter++;
+      // this.selectedoptSections[] = "" ;
+      this.SectionName = "";
+      this.line = 1;
+      this.lines = 1;
+      this.selectedoptSections[1] = null;
+    },
     writeToFileSync(filename, content) {
       const fs = window.require("fs");
       const path = require("path");
@@ -211,8 +340,16 @@ export default {
         this.Version +
         "')" +
         "\n";
+      this.selectedopt[selectedoptcount] = Object.assign(
+        { label: T[i].toString(), value: this.options[j].toString() },
+        this.selectedopt[selectedoptcount]
+      );
+
       j++;
       i++;
+
+      selectedoptcount++;
+
       this.count++;
       this.id = "";
       this.Window = "";
@@ -220,10 +357,18 @@ export default {
       this.name = "";
     },
     CreateFile() {
-      var part2 = "";
+      
       for (var i = 1; i < T.length; i++) {
-        part2 += T[i];
+        part1 += T[i];
       }
+      for (var i = 1; i <= this.SectionCounter; i++) {
+        for (let j = 1; j <= this.line; j++) {
+          linepart += lines[[i][j]] + "\n"+"=";
+        }
+        part2 +="+section:collapsible:" + this.SectionName + "\n" + "=" + "\n"+linepart;
+        linepart="";
+      }
+      console.log(part2);
       data =
         "%" +
         this.Title +
@@ -232,9 +377,10 @@ export default {
         "*flowstyle=smallIcons" +
         "\n" +
         "\n" +
-        part2 +
+        part1 +
         "\n";
-      this.writeToFileSync("E1XX.dat", data);
+      const filename = this.PageId + ".dat";
+      this.writeToFileSync(filename, data);
       console.log(data);
     },
     loadTextFromFile() {
