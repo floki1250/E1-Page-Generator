@@ -18,9 +18,10 @@ function createWindow() {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
+    autoHideMenuBar: true,
     frame: true,
     transparent: true,
-    width: 400,
+    width: 200,
     height: 600,
     draggable: true,
     resizable: true,
@@ -35,7 +36,8 @@ function createWindow() {
     }
   })
  // mainWindow.setMenu(null)
-
+ mainWindow.setAspectRatio(0.5)
+ 
 
   mainWindow.loadURL(process.env.APP_URL)
 

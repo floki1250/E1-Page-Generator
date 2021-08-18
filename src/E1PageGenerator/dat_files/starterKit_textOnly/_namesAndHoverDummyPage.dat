@@ -1,0 +1,44 @@
+%Translation Text for Page Names and Hover Text%
+*hover=off
+
++section::Click a box of translated text to select the text, then copy and paste the string into P982400.
+
+@x:boxStyle=liteBox:Page (English)
+@y:boxStyle=liteBox:Tab Name (Translated)
+@z:boxStyle=liteBox:Hover Text (Translated)
+
+@1::Install to Maintain
+@2:color=red:Order to Cash
+@3:color=yellow:Financial Planning Forecasting
+@4:color=green:Shopfloor Management
+@5::Recruit to Hire
+@6:color=red:Project Execution
+@7:color=yellow:Procure to Pay
+
+@A::CAMFLOW_SHORT_DESC:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@B::CAMFLOW_HOVER_TEXT:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@C:color=red:ORDERTOCASH_TITLE:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@D:color=red:ORDERTOCASH_HOVER_TEXT:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@E:color=yellow:BUDGETING_SHORT_DESC:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@F:color=yellow:BUDGETING_HOVER_TEXT:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@G:color=green:SHOPFLOOR_MANAGEMENT_TITLE:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@H:color=green:SHOPFLOOR_MANAGEMENT_HOVER_TEXT:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@I::HCM_RECRUITMENT_SHORT_DESC:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@J::HCM_RECRUITMENT_HOVER_TEXT:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@K:color=red:PROJECT_EXECUTION_FLOW_TITLE:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@L:color=red:PROJECT_EXECUTION_FLOW_HOVER_TEXT:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@M:color=yellow:PROCURETOPAY_TITLE:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+@N:color=yellow:PROCURETOPAY_HOVER_TEXT:if (document.selection) {var textRange = document.body.createTextRange();textRange.moveToElementText(this);textRange.select();}else if (window.getSelection) {var textRange = document.createRange();textRange.selectNode(this.childNodes[0]);window.getSelection().addRange(textRange);}
+
+x    y    z
+=
+1    A--->B
+2    C--->D
+3    E--->F
+4    G--->H
+5    I--->J
+6    K--->L
+7    M--->N
+
+
+

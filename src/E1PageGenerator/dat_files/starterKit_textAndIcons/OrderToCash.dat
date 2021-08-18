@@ -1,0 +1,15 @@
+%ORDERTOCASH_TITLE%
+*flowStyle=smallIcons
+*hover=off
+
+@A:appId=P42101|formId=W42101C|version=ZJDE0001:ENTER_SALES_ORDER:runE1App('P42101','W42101C','ZJDE0001')
+@B:reportId=R42520|version=XJDE0001:PRINT_PICK_SLIP:runE1UBEVersion('R42520','XJDE0001','0')
+@C:appId=P4205|formId=W4205H|version=ZJDE0001:CONFIRM_SHIPMENT:runE1App('P4205','W4205H','ZJDE0001')
+@D:reportId=R42565|version=ZJDE0001:PRINT_INVOICE:runE1UBEVersion('R42565','ZJDE0001','0')
+@E:reportId=R42800|version=XJDE0001:RUN_SALES_UPDATE:runE1UBEVersion('R42800','XJDE0001','0')
+@G:appId=P42025|formId=W42025A|version=ZJDE0001:VIEW_SALES_LEDGER:runE1App('P42025','W42025A','ZJDE0001')
+@H:appId=P40051|formId=W40051A|version=ZJDE0001:CREATE_RMA:runE1App('P40051','W40051A','ZJDE0001')
+
+A--->B--->C--->D-,->E
+                 |
+                 `->G--->H

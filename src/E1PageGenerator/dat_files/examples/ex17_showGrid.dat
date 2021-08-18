@@ -1,0 +1,30 @@
+%Example of showing grid while developing pages%
+*showGrid
+*hover=off
+
+@A::&nbsp;:
+
++section:collapsible:1. Example of a correct structure
+   A-,    ,->A-,
+     |    |    |
+     |----'->A-| 
+     |         |
+,->A-|  A--->A-|
+|    |         |
+|  A-'         |
+'---------,----'
+          '->A
+=          
++section:collapsible:2. Example of an incorrect structure
+   A-,--A  ,-A
+     |     |
+     '--A--|-A
+           |
+           '-A
+=           
++section:collapsible:3. Corrected version of #2
+   A-,--A ,--A
+     |    |
+     '--A-|--A
+          |
+          '--A
