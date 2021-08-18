@@ -20,8 +20,8 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     frame: true,
     transparent: true,
-    width: 400,
-    height: 600,
+    width: 500,
+    height: 780,
     draggable: true,
     resizable: true,
     useContentSize: true,
@@ -34,7 +34,7 @@ function createWindow() {
       preload: path.resolve(__dirname, process.env.QUASAR_ELECTRON_PRELOAD)
     }
   })
- // mainWindow.setMenu(null)
+  mainWindow.setMenu(null)
 
 
   mainWindow.loadURL(process.env.APP_URL)
