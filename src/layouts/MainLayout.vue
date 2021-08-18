@@ -1,7 +1,7 @@
 <template>
   <div class="title">E1 Page Generators</div>
 
-  <div class="row" style="padding: 50px 0px 50px 100px">
+  <div class="row" style="padding: 50px 0px 50px 50px">
     <!-- widget 1 : Open File -->
     <div class="widget fluent">
       <q-file
@@ -113,6 +113,7 @@
                 icon="las la-plus"
                 style="margin: 50px"
                 rounded
+                push
                 @click="add"
               >
                 <q-badge color="red" :label="count" floating />
@@ -123,6 +124,7 @@
                 icon="las la-angle-right"
                 style="margin: 30px"
                 rounded
+                push
                 @click="Section = !Section"
               />
             </div>
@@ -136,7 +138,14 @@
               ><span class="text-weight-bold">Add Sections</span>
             </q-toolbar-title>
 
-            <q-btn flat round dense icon="close" v-close-popup />
+            <q-btn
+              flat
+              round
+              dense
+              icon="close"
+              v-close-popup="2"
+              @click="ClearData"
+            />
           </q-toolbar>
           <q-card-section>
             <strong
@@ -171,29 +180,45 @@
                   color="indigo"
                   icon="las la-plus"
                   rounded
-                  @click="AddLine" />
+                  dense
+                  push
+                  @click="AddLine"
+                  ><q-tooltip class="bg-indigo-10"> Add Line </q-tooltip></q-btn
+                >
                 <q-btn
                   color="indigo"
                   icon="las la-minus"
                   rounded
-                  @click="RemoveLine" /></template
-            ></q-select>
+                  dense
+                  push
+                  @click="RemoveLine"
+                  ><q-tooltip class="bg-indigo-10">
+                    Remove Line
+                  </q-tooltip></q-btn
+                ></template
+              ></q-select
+            >
             <div>
               <q-btn
                 color="indigo"
                 icon="las la-plus"
-                style="margin: 30px"
                 rounded
                 @click="AddSection"
-                label="Add Section"
-              ></q-btn>
+                push
+                style="margin: 50px"
+              >
+                <q-tooltip class="bg-indigo-10"> Add Section </q-tooltip>
+              </q-btn>
               <q-btn
-                color="indigo"
+                color="indigo-10"
                 icon="las la-file"
                 rounded
                 @click="CreateFile"
-                label="Create File"
-              />
+                push
+                :loading="loading"
+                ><q-tooltip class="bg-indigo-10">Create File</q-tooltip
+                ><template v-slot:loading> <q-spinner-gears /> </template
+              ></q-btn>
             </div>
           </q-card-section>
         </q-card>
@@ -210,7 +235,7 @@ var data = "";
 var i = 1;
 var j = 0;
 var T = [];
-var part2 = "" ;
+var part2 = "";
 var lines = [[]];
 var selectedoptcount = 1;
 var linepart = "";
@@ -218,6 +243,7 @@ var part1 = "";
 export default {
   data() {
     return {
+      loading: false,
       PageId: "",
       count: 0,
       options: [
@@ -274,7 +300,30 @@ export default {
       line: 1,
     };
   },
+
   methods: {
+    ClearData() {
+      data = "";
+      i = 1;
+      j = 0;
+      T = [];
+      part2 = "";
+      lines = [[]];
+      selectedoptcount = 1;
+      linepart = "";
+      part1 = "";
+      this.SectionCounter = 1;
+      this.SectionName = "";
+      this.LineSection = "";
+      this.lines = 1;
+      this.line = 1;
+      this.Version = "";
+      this.Window = "";
+      this.Title = "";
+      this.id = "";
+      this.name = "";
+      this.count = 0;
+    },
     RemoveLine() {
       this.line--;
       this.lines--;
@@ -292,17 +341,39 @@ export default {
       console.log("Section Counter : " + this.SectionCounter);
       console.log("Line : " + this.line);
       console.log(lines[[this.SectionCounter][this.line]] + "\n");
+      linepart +=
+        lines[[this.SectionCounter][this.line]]
+          .toString()
+          .replace(",", "     ") +
+        "\n" +
+        "=" +
+        "\n";
       this.line++;
       this.lines++;
     },
     AddSection() {
-      
+      part2 +=
+        "+section:collapsible:" +
+        this.SectionName +
+        "\n" +
+        "=" +
+        "\n" +
+        linepart;
+      linepart = "";
       this.SectionCounter++;
       // this.selectedoptSections[] = "" ;
       this.SectionName = "";
       this.line = 1;
       this.lines = 1;
       this.selectedoptSections[1] = null;
+    },
+    loadTextFromFile() {
+      const reader = new FileReader();
+      reader.readAsText(this.model);
+      reader.onload = (res) => {
+        console.log(res.target.result);
+        this.Files = res.target.result;
+      };
     },
     writeToFileSync(filename, content) {
       const fs = window.require("fs");
@@ -357,18 +428,10 @@ export default {
       this.name = "";
     },
     CreateFile() {
-      
+      this.loading = true;
       for (var i = 1; i < T.length; i++) {
         part1 += T[i];
       }
-      for (var i = 1; i <= this.SectionCounter; i++) {
-        for (let j = 1; j <= this.line; j++) {
-          linepart += lines[[i][j]] + "\n"+"=";
-        }
-        part2 +="+section:collapsible:" + this.SectionName + "\n" + "=" + "\n"+linepart;
-        linepart="";
-      }
-      console.log(part2);
       data =
         "%" +
         this.Title +
@@ -378,18 +441,25 @@ export default {
         "\n" +
         "\n" +
         part1 +
-        "\n";
+        "\n" +
+        part2.replace(",", "    ");
       const filename = this.PageId + ".dat";
       this.writeToFileSync(filename, data);
-      console.log(data);
-    },
-    loadTextFromFile() {
-      const reader = new FileReader();
-      reader.readAsText(this.model);
-      reader.onload = (res) => {
-        console.log(res.target.result);
-        this.Files = res.target.result;
-      };
+      // simulate a delay
+
+      this.ClearData;
+      var child = window.require("child_process").execFile;
+
+      var executePath =
+        "..\\E1-Page-Generator\\src\\E1PageGenerator\\ExecuteGenerator.bat";
+      child(executePath, function (err, data) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log(data.toString());
+      });
+      this.loading = false;
     },
   },
 };

@@ -1,0 +1,27 @@
+%Task-Based Example%
+*flowstyle=smallIcons
+
+@A:task=P98305W|color=red
+@B:task=MR_WSJ|disabled
+@C:task=1/G13ECA|color=green
+@D:task=BPM944073998730|color=green
+@E:task=10/G40G111
+@F:task=2/G08CM12|color=yellow
+@G:task=10/G3241|color=red
+@H:task=10/G32
+@I:task=4/G07BUSP11|color=red
+@J:task=2/G5121|color=yellow
+@K:task=10/G1511|color=green
+@L:task=04/G43E11|color=yellow
+
+
+     ,->B-,  L--->E
+     |    |  /    \
+,->A-|    '->D<,--F-,
+|  / |       \ |    |
+|  | `->C ,->H '->G |
+|  J<,----'----,----'
+|    `->I-,    |
+`----,    '->K |
+     `---------'
+          

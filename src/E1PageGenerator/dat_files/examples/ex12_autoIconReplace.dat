@@ -1,0 +1,22 @@
+%Automatically Assigned Icons%
+*flowstyle=tiles
+
+@A:appId=P98305W|formId=W98305WA|color=red:Batch Versions:runE1App('P98305W','W98305WA')
+@B:appId=P986110B|formId=W986110BA|color=red:Submitted Job Search:runE1App('P986110B','W986110BA')
+@C:appId=P13801|formId=W13801A:Equipment Cost Detail:runE1App('P13801','W13801A')
+@D:appId=P03B11|formId=W03B11A|color=red:Standard Invoice Entry:runE1App('P03B11','W03B11A')
+@E:appId=P40G31|formId=W40G31A|disabled:Food and Beverage:runE1App('P40G31','W40G31A')
+@F:appId=P08826|formId=W08826A|color=green:HR Compensation Review:runE1App('P08826','W08826A')
+@G:appId=P3210|formId=W3210A|color=yellow:Edit Item/Price/Cost:runE1App('P3210','W3210A')
+@H:appId=P4210|formId=W4210A|color=yellow:Sales Order Detail Revisions:runE1App('P4210','W4210A')
+@I:appId=P07210I|formId=W07210IA|color=red:Interims Workbench:runE1App('P07210I','W07210IA')
+@J:appId=P512000|formId=W512000A|color=yellow:Job Status Inquiry:runE1App('P512000','W512000A')
+@K:appId=P154210|formId=W154210A|color=green:Rent Roll Inquiry:runE1App('P154210','W154210A')
+@L:appId=P43Q01|formId=W43Q01A|disabled:Supply Chain 360:runE1App('P43Q01','W43Q01A')
+
+
+A    B    C    D
+=
+E    F    G    H
+=
+I    J    K    L

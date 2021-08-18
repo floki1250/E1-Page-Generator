@@ -1,0 +1,17 @@
+%Gamification Example%
+
+@A::Get User Id:alert(getUserId());
+@B::Get User Name:alert(getUserName());
+@C::Get Environment:alert(getEnvironment());
+@D::Get Login Role:alert(getLoginRole());
+@E:color=red:Get User Id from User Info Object:alert(getUserInfo().userId);
+@F:color=red:Get Full Name from User Info Object:alert(getUserInfo().fullName);
+@G:color=red:Get Role from User Info Object:alert(getUserInfo().role);
+@H:color=red:Get Env from User Info Object:alert(getUserInfo().env);
+@I:color=red:Get Service Pack from User Info Object:alert(getUserInfo().servicePack);
+
+A    B    C    D
+=
+=
+E    F    G    H    I
+

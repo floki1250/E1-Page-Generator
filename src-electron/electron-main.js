@@ -1,7 +1,6 @@
-import { app, BrowserWindow, nativeTheme, dialog } from 'electron'
+import { app, BrowserWindow, nativeTheme } from 'electron'
 import path from 'path';
 import { initialize } from '@electron/remote/main'
-import fs from 'fs'
 
 initialize()
 try {
@@ -18,11 +17,15 @@ function createWindow() {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
+    autoHideMenuBar: true,
     frame: true,
-    transparent: true,
-    width: 500,
-    height: 780,
+    //transparent: true,
+    minWidth: 400,
+    minHeight: 720,
+    width: 400,
+    height: 720,
     draggable: true,
+    backgroundColor: "#0e122b",
     resizable: true,
     useContentSize: true,
     webPreferences: {
@@ -34,9 +37,11 @@ function createWindow() {
       preload: path.resolve(__dirname, process.env.QUASAR_ELECTRON_PRELOAD)
     }
   })
-  mainWindow.setMenu(null)
-
-
+  // mainWindow.setMenu(null)
+  //mainWindow.setAspectRatio(1 / 1)
+  mainWindow.setVibrancy("dark")
+  let win = BrowserWindow.getFocusedWindow();
+  win.webContents.setZoomFactor(1.0);
   mainWindow.loadURL(process.env.APP_URL)
 
   if (process.env.DEBUGGING) {

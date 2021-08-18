@@ -1,0 +1,22 @@
+%Gestion des Appel de Livraison Location%
+*flowStyle=smallIcons
+
+@C:AppId=P43060|FormId=W43060B|Version=SUEZ802:Generation appel de Livraison Location:runE1App('P43060','W43060B','SUEZ802')
+@D:AppId=P43081|FormId=W43081A|Version=SUEZ003:Approbation Appel de Livraison:runE1App('P43081','W43081A','SUEZ003')
+@E:AppId=P4310|FormId=W4310G|Version=SUEZ802:Consultation Appel de Livraison Location:runE1App('P4310','W4310G','SUEZ802')
+@F:ReportId=R5943505|Version=SUEZ002:Impression Contrat de Location:runE1UBE('R5943505','promptForDS','SUEZ002','1')
+@G:ReportId=R5943506|Version=SUEZ0010:Reimpression Contrat de Location:runE1UBE('R5943506','promptForDS','SUEZ0010','1')
+@H:AppId=P4312|FormId=W4312F|Version=SUEZ801:Saisie Reception Loyer:runE1App('P4312','W4312F','SUEZ801')
+@I:AppId=P43214|FormId=W43214A|Version=SUEZ801:Consultation et Contre passation des Receptions:runE1App('P43214','W43214A','SUEZ801')
+
+
++section:collapsible:Gestion des Appels de Livraison
+=
+   C--->D--->E--->F-,
+,-------------------'
+|
+`->G
+=
++section:collapsible:Reception des Appels de Livraison
+=
+   H--->I
