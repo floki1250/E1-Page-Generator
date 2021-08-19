@@ -1,3 +1,7 @@
+Could not find label '' in resource bundle.
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 0
+	at generator.Generator.getBasename(Generator.java:268)
+	at generator.Generator.main(Generator.java:260)
 Could not find label 'Gestion des Appels de Livraison Hors stock' in resource bundle.
 Could not find label 'Gestion des Appel de Livraison Usines et M. Labo' in resource bundle.
 Could not find label 'Generation Appel de Livraison Usine et M. Labo (OU --> LU)' in resource bundle.
@@ -46,4 +50,15 @@ Could not find label 'Consultation des Contrats de Location' in resource bundle.
 Could not find label 'Consultation des Revisions des Contrats de Location' in resource bundle.
 Could not find label 'Impression Contrat de Location' in resource bundle.
 Could not find label 'Reimpression Contrat de Location' in resource bundle.
+0
+Could not find label 'sdfsdf' in resource bundle.
+Could not find label 'sdfsdf' in resource bundle.
+Could not find label '' in resource bundle.
+0
+Could not find label '' in resource bundle.
+Could not find label 'dfgdf' in resource bundle.
+Could not find label '' in resource bundle.
+Could not find label '' in resource bundle.
+Could not find label '' in resource bundle.
+Could not find label '' in resource bundle.
 0

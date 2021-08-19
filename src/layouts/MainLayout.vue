@@ -51,7 +51,7 @@
         @click="create = !create"
       ></q-btn>
     </div>
-
+    <!-- Create File Dialog -->
     <q-dialog v-model="create">
       <q-card class="fluent-white">
         <q-toolbar>
@@ -59,17 +59,33 @@
             ><span class="text-weight-bold"> Create New Page</span>
           </q-toolbar-title>
 
-          <q-btn flat round dense icon="close" v-close-popup />
+          <q-btn
+            flat
+            round
+            dense
+            icon="close"
+            v-close-popup
+            @click="ClearData"
+          />
         </q-toolbar>
 
         <q-card-section class="row items-center">
           <div style="padding: 10px">
-            <q-input type="text" label="Title" v-model="Title" color="indigo" />
             <q-input
               type="text"
-              label="Page Id"
+              label="Title"
+              v-model="Title"
+              color="indigo"
+              :rules="[(val) => !!val || 'Field is required']"
+            />
+            <q-input
+              type="text"
+              label="PageId"
               v-model="PageId"
               color="indigo"
+              hint="Exemple E1XX"
+              prefix="E1"
+              :rules="[(val) => !!val || 'Field is required']"
             />
             <div>
               <q-radio
@@ -90,13 +106,26 @@
               />
             </div>
             <q-separator />
-            <q-input type="text" label="ID" v-model="id" color="indigo" />
-            <q-input type="text" label="name" v-model="name" color="indigo" />
+            <q-input
+              type="text"
+              label="ID"
+              v-model="id"
+              color="indigo"
+              :rules="[(val) => !!val || 'Field is required']"
+            />
+            <q-input
+              type="text"
+              label="name"
+              v-model="name"
+              color="indigo"
+              :rules="[(val) => !!val || 'Field is required']"
+            />
             <q-input
               type="text"
               label="Version"
               v-model="Version"
               color="indigo"
+              :rules="[(val) => !!val || 'Field is required']"
             />
             <div v-if="type == 'AppId'">
               <q-input
@@ -104,6 +133,7 @@
                 label="Window"
                 v-model="Window"
                 color="indigo"
+                :rules="[(val) => !!val || 'Field is required']"
               />
             </div>
             <!-- <q-select v-model="alphabet" :options="options" label="Alphabet" /> -->
@@ -224,13 +254,60 @@
         </q-card>
       </q-dialog>
     </q-dialog>
+    <!-- About Me Dialog -->
   </div>
   <div style="position: fixed; top: 90%; left: 85%; z-index: 1000">
-    <q-btn color="primary" icon="las la-info-circle" flat size="lg" round />
+    <q-btn
+      color="primary"
+      icon="las la-info-circle"
+      flat
+      size="lg"
+      round
+      @click="AboutMe = !AboutMe"
+    />
   </div>
+  <q-dialog v-model="AboutMe" persistent>
+    <q-card>
+      <q-toolbar>
+        <q-toolbar-title
+          ><span class="text-weight-bold">About Us</span></q-toolbar-title
+        >
+        <q-btn flat round dense icon="close" v-close-popup />
+      </q-toolbar>
+      <q-card-section style="margin-left: 10px">
+        <q-avatar
+          size="200px"
+          font-size="52px"
+          color="grey"
+          text-color="black"
+          style="margin: 20px"
+        >
+          <img src="../assets/Brand.png" alt="" />
+        </q-avatar>
+        <q-separator />
+        <p class="info">Hi 👋, I'm Floki Web Developer</p>
+        <p class="info">For Any Support You can Find me Here</p>
+        <div class="row">
+          <q-btn flat round color="primary" icon="lab la-twitter" size="25px" @click="CopytoClipboard('Adem1250_Dr')">
+            <q-tooltip> Adem1250_Dr </q-tooltip></q-btn
+          >
+          <q-btn flat round color="black" icon="lab la-github" size="25px" @click="CopytoClipboard('floki1250')"
+            ><q-tooltip> floki1250 </q-tooltip></q-btn
+          >
+          <q-btn icon="las la-envelope" color="black" size="25px" flat round @click="CopytoClipboard('d.adem1250@gmail.com')">
+            <q-tooltip> d.adem1250@gmail.com </q-tooltip>
+          </q-btn>
+        </div>
+        <q-btn flat rounded style="margin-left: 10px"
+          >Made with ❤️ in Tunisia</q-btn
+        >
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
+
 var data = "";
 var i = 1;
 var j = 0;
@@ -275,6 +352,7 @@ export default {
         "Z",
       ],
       alphabet: "",
+      AboutMe: false,
       create: false,
       Section: false,
       type: "AppId",
@@ -302,6 +380,18 @@ export default {
   },
 
   methods: {
+    CopytoClipboard(text) {
+      const { clipboard } = window.require("electron");
+      clipboard.writeText(text);
+      const notifier = window.require("node-notifier");
+      const path = require("path");
+      notifier.notify({
+          title: "Copied !",
+          message: "Copied To Your clipboard \n"+text,
+          icon: path.join("src/assets/", "Brand.png"),
+          sound: true,
+        });
+    },
     ClearData() {
       data = "";
       i = 1;
@@ -365,7 +455,11 @@ export default {
       this.SectionName = "";
       this.line = 1;
       this.lines = 1;
-      this.selectedoptSections[1] = null;
+      for (let i = 0; i < this.selectedoptSections.length; i++) {
+        this.selectedoptSections[i] = null;
+      }
+
+      part2 = part2.replace(",", "     ");
     },
     loadTextFromFile() {
       const reader = new FileReader();
@@ -378,12 +472,7 @@ export default {
     writeToFileSync(filename, content) {
       const fs = window.require("fs");
       const path = require("path");
-      const username = path.resolve(__dirname);
-      filename =
-        "C:\\Users\\" +
-        username.split("\\")[2] +
-        "\\Desktop\\" +
-        path.normalize(filename);
+      filename = "src/E1PageGenerator/dat_files/" + path.normalize(filename);
       fs.writeFileSync(filename, content);
     },
     add() {
@@ -442,24 +531,37 @@ export default {
         "\n" +
         part1 +
         "\n" +
-        part2.replace(",", "    ");
-      const filename = this.PageId + ".dat";
+        part2.replaceAll(",", "     ");
+      const filename = "E1" + this.PageId + ".dat";
       this.writeToFileSync(filename, data);
+
       // simulate a delay
-
-      this.ClearData;
+      setTimeout(() => {
+        this.loading = false;
+      }, 3000);
+      const notifier = window.require("node-notifier");
+      const path = require("path");
       var child = window.require("child_process").execFile;
+      // child.spawn = window.require("cross-spawn");
 
-      var executePath =
-        "..\\E1-Page-Generator\\src\\E1PageGenerator\\ExecuteGenerator.bat";
-      child(executePath, function (err, data) {
+      var executablePath = "src\\ExecuteGenerator.bat";
+      console.log(executablePath);
+
+      child(executablePath, function (err, data) {
         if (err) {
           console.error(err);
           return;
         }
         console.log(data.toString());
+        notifier.notify({
+          title: "Done",
+          message: "Your File Ready " + filename,
+          icon: path.join("src/assets/", "logo.png"),
+          sound: true,
+        });
       });
-      this.loading = false;
+
+      this.ClearData;
     },
   },
 };

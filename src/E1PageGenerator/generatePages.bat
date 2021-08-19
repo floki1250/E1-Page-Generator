@@ -80,7 +80,6 @@ FOR %%f IN (*.dat dat_files\*.dat) DO (
 )
 
 echo Generation complete.
-start explorer.exe ".\output_pages\" 
 echo.
 IF EXIST generator.log (
         echo Warnings encountered.  Check generator.log for details.
@@ -88,3 +87,4 @@ IF EXIST generator.log (
 )
         
 del lockfile.txt
+exit

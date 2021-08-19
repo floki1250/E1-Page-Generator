@@ -38,10 +38,9 @@ function createWindow() {
     }
   })
   // mainWindow.setMenu(null)
-  //mainWindow.setAspectRatio(1 / 1)
-  mainWindow.setVibrancy("dark")
-  let win = BrowserWindow.getFocusedWindow();
-  win.webContents.setZoomFactor(1.0);
+ 
+  
+  
   mainWindow.loadURL(process.env.APP_URL)
 
   if (process.env.DEBUGGING) {
