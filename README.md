@@ -21,6 +21,3 @@ quasar dev -m electron
 # JDE E1
 ![image](https://user-images.githubusercontent.com/37814393/130220934-b97c1c3a-8216-4820-879f-f015b29812f3.png)
 #
-![Brand](https://user-images.githubusercontent.com/37814393/130221045-96663ead-62e5-4d72-a8db-4387ed55b5cf.png)
-#
-
