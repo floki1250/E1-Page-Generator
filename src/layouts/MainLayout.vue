@@ -288,13 +288,33 @@
         <p class="info">Hi 👋, I'm Floki Web Developer</p>
         <p class="info">For Any Support You can Find me Here</p>
         <div class="row">
-          <q-btn flat round color="primary" icon="lab la-twitter" size="25px" @click="CopytoClipboard('Adem1250_Dr')">
+          <q-btn
+            flat
+            round
+            color="primary"
+            icon="lab la-twitter"
+            size="25px"
+            @click="CopytoClipboard('Adem1250_Dr')"
+          >
             <q-tooltip> Adem1250_Dr </q-tooltip></q-btn
           >
-          <q-btn flat round color="black" icon="lab la-github" size="25px" @click="CopytoClipboard('floki1250')"
+          <q-btn
+            flat
+            round
+            color="black"
+            icon="lab la-github"
+            size="25px"
+            @click="CopytoClipboard('floki1250')"
             ><q-tooltip> floki1250 </q-tooltip></q-btn
           >
-          <q-btn icon="las la-envelope" color="black" size="25px" flat round @click="CopytoClipboard('d.adem1250@gmail.com')">
+          <q-btn
+            icon="las la-envelope"
+            color="black"
+            size="25px"
+            flat
+            round
+            @click="CopytoClipboard('d.adem1250@gmail.com')"
+          >
             <q-tooltip> d.adem1250@gmail.com </q-tooltip>
           </q-btn>
         </div>
@@ -307,7 +327,6 @@
 </template>
 
 <script>
-
 var data = "";
 var i = 1;
 var j = 0;
@@ -386,13 +405,14 @@ export default {
       const notifier = window.require("node-notifier");
       const path = require("path");
       notifier.notify({
-          title: "Copied !",
-          message: "Copied To Your clipboard \n"+text,
-          icon: path.join("src/assets/", "Brand.png"),
-          sound: true,
-        });
+        title: "Copied !",
+        message: "Copied To Your clipboard \n" + text,
+        icon: path.join("Res/", "Brand.png"),
+        sound: true,
+      });
     },
     ClearData() {
+      this.loading = false;
       data = "";
       i = 1;
       j = 0;
@@ -472,7 +492,7 @@ export default {
     writeToFileSync(filename, content) {
       const fs = window.require("fs");
       const path = require("path");
-      filename = "src/E1PageGenerator/dat_files/" + path.normalize(filename);
+      filename = "Res/E1PageGenerator/dat_files/" + path.normalize(filename);
       fs.writeFileSync(filename, content);
     },
     add() {
@@ -534,33 +554,28 @@ export default {
         part2.replaceAll(",", "     ");
       const filename = "E1" + this.PageId + ".dat";
       this.writeToFileSync(filename, data);
-
-      // simulate a delay
-      setTimeout(() => {
-        this.loading = false;
-      }, 3000);
       const notifier = window.require("node-notifier");
       const path = require("path");
       var child = window.require("child_process").execFile;
-      // child.spawn = window.require("cross-spawn");
-
-      var executablePath = "src\\ExecuteGenerator.bat";
-      console.log(executablePath);
-
+      child.spawn = window.require("cross-spawn");
+      var executablePath = "ExecuteGenerator.bat";
       child(executablePath, function (err, data) {
         if (err) {
           console.error(err);
           return;
         }
         console.log(data.toString());
+      });
+      setTimeout(function () {
+        
         notifier.notify({
           title: "Done",
           message: "Your File Ready " + filename,
-          icon: path.join("src/assets/", "logo.png"),
           sound: true,
+          icon: path.join("Res/", "logo.png"),
         });
-      });
-
+      }, 3000);
+      this.loading = false;
       this.ClearData;
     },
   },

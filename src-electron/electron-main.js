@@ -29,6 +29,7 @@ function createWindow() {
     resizable: true,
     useContentSize: true,
     webPreferences: {
+      zoomFactor: 0.8,
       nativeWindowOpen: true,
       enableRemoteModule: true,
       contextIsolation: false,
