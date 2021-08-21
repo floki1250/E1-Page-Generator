@@ -1,0 +1,19 @@
+%Examples of left-facing arrows%
+*hover=off
+
+@A::&nbsp;
+
+A<-->A
+=
+A<,
+  |->A
+A<'
+=
+A--->A
+/    \
+A<---A
+=
+A<-->A
+/    /
+\    \
+A<-->A

@@ -1,0 +1,14 @@
+%Using Custom Icons%
+*flowStyle=largeIcons
+*hover=off
+
+@A:description=In the absence of other information, the default application icon will be used:Default App:
+@B:report|description=When the 'report' flag (or 'reportId=<value>') is in the options list, the default report icon will be used.:Default Report
+@C:appId=P986110B|formId=W986110BA|description=When appId and formId are specified, the default application icon will be used until the page is inserted into E1.  When the page is viewed from an E1 WebClient running Tools 9.1.0.3 or later, the icon will be replaced at runtime with the icon for the specific application and form.:Specific App
+@D:customIcon=img/plus_active.png|description=Example of a custom icon that resides in the directory structure of the E1Page itself.:Custom Icon in Page
+@E:customIcon=../../share/images/jdeicons/home_large.png|description=Example of a custom icon that lives within the directory structure of an E1 WebClient.  The icon will not show up until the page is viewed from within E1.|Custom Icon in E1
+@F:customIcon=http\://www.oracleimg.com/us/assets/oralogo-small.gif|description=Example of a custom icon referenced from a third-party URL.  Note in the DAT file that the colon in http\:// is escaped with a backslash.|Custom Icon by URL
+
+A    B    C
+=
+D    E    F

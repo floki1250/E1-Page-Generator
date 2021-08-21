@@ -1,0 +1,19 @@
+%BUDGETING_TITLE%
+*flowStyle=largeIcons
+*showDescr=hoverOnly
+
+@A:appId=P1406|formId=W1406A|description=W1406A_DESCR:W1406A_TITLE:runE1App('P1406','W1406A')
+@B:appId=P1405|formId=W1405A|description=W1405A_DESCR:W1405A_TITLE:runE1App('P1405','W1405A')
+@C:reportId=R1403|version=XJDE0001|description=R1403_DESCR:R1403_TITLE:runE1UBEVersion('R1403','XJDE0001','0')
+@D:reportId=R1404|version=XJDE0001|description=R1404_DESCR:R1404_TITLE:runE1UBEVersion('R1404','XJDE0001','0')
+@E:hoverLinkText=Documentation|hoverLinkURL=http\://www.oracle.com/|reportId=R1407|version=XJDE0001|description=R1407_DESCR:R1407_TITLE:runE1UBEVersion('R1407','XJDE0001','0')
+@F:appId=P14102|formId=W14102A|version=ZJDE0001:W14102A_XJDE0001_TITLE:runE1App('P14102','W14102A','ZJDE0001')
+@G:disabled|appId=P14102|formId=W14102A|version=ZJDE0002:W14102A_XJDE0002_TITLE:runE1App('P14102','W14102A','ZJDE0002')
+@H:appId=P14102|formId=W14102A|version=ZJDE0003:W14102A_XJDE0003_TITLE:runE1App('P14102','W14102A','ZJDE0003')
+@I:appId=P09210A|formId=W09210AA|version=ZJDE0001|description=W09210AA_DESCR:W09210AA_TITLE:runE1App('P09210A','W09210AA','ZJDE0001')
+
+   A--->B-,
+          |
+        C-'->D--->E-,
+,-------------------'
+`->F--->G--->H--->I
