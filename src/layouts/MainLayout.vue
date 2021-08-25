@@ -1,7 +1,7 @@
 <template>
   <div class="title">E1 Page Generators</div>
 
-  <div class="row" style="padding: 50px 0px 50px 50px">
+  <div class="row" style="padding: 20px 0px 50px 50px">
     <!-- widget 1 : Open File -->
     <div class="widget fluent">
       <q-file
@@ -40,7 +40,12 @@
         placeholder="File Here..."
       ></textarea>
     </div>
-    <q-dialog v-model="Edit">
+    <q-dialog
+      v-model="Edit"
+      maximized
+      transition-show="slide-up"
+      transition-hide="slide-down"
+    >
       <q-card class="fluent-white">
         <q-toolbar>
           <q-toolbar-title
@@ -57,13 +62,14 @@
           />
         </q-toolbar>
         <q-card-section class="row items-center">
-          <div style="padding: 10px">
+          <div style="width: 100%">
             <q-input
               type="text"
               label="Title"
               v-model="ETitle"
               color="indigo"
               autogrow
+              style=""
             />
             <q-input
               type="text"
@@ -86,14 +92,20 @@
             ></q-select>
             <q-separator />
             <q-input type="text" label="ID" v-model="Eid" color="indigo" />
-            <q-input type="text" label="name" v-model="Ename" color="indigo" autogrow/>
+            <q-input
+              type="text"
+              label="name"
+              v-model="Ename"
+              color="indigo"
+              autogrow
+            />
             <q-input
               type="text"
               label="Version"
               v-model="EVersion"
               color="indigo"
             />
-            <div v-if="Eid.substring(0,1) == 'P'">
+            <div v-if="Eid.substring(0, 1) == 'P'">
               <q-input
                 type="text"
                 label="Window"
@@ -101,24 +113,27 @@
                 color="indigo"
               />
             </div>
-
+          <div class="btn" style="margin-top:50px">
             <q-btn
               color="indigo"
               icon="las la-plus"
-              style="margin: 50px"
+              style="margin: 10px"
+              flat
               rounded
-              push
+              size="lg"
             >
             </q-btn>
 
             <q-btn
               color="indigo"
               icon="las la-angle-right"
-              style="margin: 30px"
+              style="position:absolute;right:20px;margin:10px"
               rounded
-              push
+              flat
+              size="lg"
               @click="Viewfile"
             />
+            </div>
           </div>
         </q-card-section>
       </q-card>
@@ -139,7 +154,7 @@
             @click="ClearData"
           />
         </q-toolbar>
-        <q-card-section>
+        <q-card-section style="width: 100%">
           <strong
             >Section
             <q-badge color="indigo" :label="SectionCounter" /> :</strong
@@ -223,12 +238,18 @@
         size="100px"
         rounded
         color="white"
-        class="btn"
+        style="width: 100%;
+    height: 100%;"
         @click="create = !create"
       ></q-btn>
     </div>
     <!-- Create File Dialog -->
-    <q-dialog v-model="create">
+    <q-dialog
+      v-model="create"
+      maximized
+      transition-show="slide-up"
+      transition-hide="slide-down"
+    >
       <q-card class="fluent-white">
         <q-toolbar>
           <q-toolbar-title
@@ -246,7 +267,7 @@
         </q-toolbar>
 
         <q-card-section class="row items-center">
-          <div style="padding: 10px">
+          <div style="padding: 10px; width: 100%">
             <q-input
               type="text"
               label="Title"
@@ -296,13 +317,27 @@
               color="indigo"
               :rules="[(val) => !!val || 'Field is required']"
             />
-            <q-input
-              type="text"
-              label="Version"
-              v-model="Version"
-              color="indigo"
-              :rules="[(val) => !!val || 'Field is required']"
-            />
+            <div class="row">
+              <q-input
+                :disable="VersionCheck"
+                type="text"
+                label="Version"
+                v-model="Version"
+                color="indigo"
+                :rules="[(val) => !!val || 'Field is required']"
+                style="width: 100%"
+              >
+                <template v-slot:after
+                  ><q-btn
+                    color="indigo"
+                    icon="las la-minus-circle"
+                    @click="VersionCheck = !VersionCheck"
+                    flat
+                    round
+                /></template>
+              </q-input>
+            </div>
+
             <div v-if="type == 'AppId'">
               <q-input
                 type="text"
@@ -310,34 +345,43 @@
                 v-model="Window"
                 color="indigo"
                 :rules="[(val) => !!val || 'Field is required']"
+                
               />
             </div>
             <!-- <q-select v-model="alphabet" :options="options" label="Alphabet" /> -->
-            <div>
+            <div class="btn ">
               <q-btn
                 color="indigo"
                 icon="las la-plus"
-                style="margin: 50px"
                 rounded
-                push
+                flat
                 @click="add"
+                size="lg"
+                style="margin:10px"
+                
               >
-                <q-badge color="red" :label="count" floating />
+              <q-badge color="red" :label="count" floating/>
               </q-btn>
-
+              
               <q-btn
                 color="indigo"
                 icon="las la-angle-right"
-                style="margin: 30px"
                 rounded
-                push
+                flat
                 @click="Section = !Section"
+                size="lg"
+                style="position:absolute;right:20px;margin:10px"
               />
             </div>
           </div>
         </q-card-section>
       </q-card>
-      <q-dialog v-model="Section">
+      <q-dialog
+        v-model="Section"
+        maximized
+        transition-show="slide-up"
+        transition-hide="slide-down"
+      >
         <q-card class="fluent-white" style="width: 100%">
           <q-toolbar>
             <q-toolbar-title
@@ -387,7 +431,7 @@
                   icon="las la-plus"
                   rounded
                   dense
-                  push
+                  flat
                   @click="AddLine"
                   ><q-tooltip class="bg-indigo-10"> Add Line </q-tooltip></q-btn
                 >
@@ -396,7 +440,7 @@
                   icon="las la-minus"
                   rounded
                   dense
-                  push
+                  flat
                   @click="RemoveLine"
                   ><q-tooltip class="bg-indigo-10">
                     Remove Line
@@ -404,14 +448,15 @@
                 ></template
               ></q-select
             >
-            <div>
+            <div class="btn ">
               <q-btn
                 color="indigo"
                 icon="las la-plus"
                 rounded
                 @click="AddSection"
-                push
-                style="margin: 50px"
+                flat
+                style=";margin:10px"
+                size="lg"
               >
                 <q-tooltip class="bg-indigo-10"> Add Section </q-tooltip>
               </q-btn>
@@ -420,8 +465,10 @@
                 icon="las la-file"
                 rounded
                 @click="CreateFile"
-                push
+                flat
+                size="lg"
                 :loading="loading"
+                style="position:absolute;right:20px;margin:10px"
                 ><q-tooltip class="bg-indigo-10">Create File</q-tooltip
                 ><template v-slot:loading> <q-spinner-gears /> </template
               ></q-btn>
@@ -527,7 +574,7 @@ export default {
       Ename: "",
       Eselectedopt: "",
       Eopt: [{ label: "", Alpha: "", Id: "", Name: "", V: "", FormId: "" }],
-      Etype : true,
+      Etype: true,
       //Create Page
       loading: false,
       PageId: "",
@@ -566,6 +613,7 @@ export default {
       Section: false,
       type: "AppId",
       Version: "",
+      VersionCheck: true,
       Window: "",
       Title: "",
       id: "",
@@ -803,30 +851,55 @@ export default {
       fs.writeFileSync(filename, content);
     },
     add() {
-      T[i] =
-        "@" +
-        this.options[j] +
-        ":" +
-        this.type +
-        "=" +
-        this.id +
-        "|FormId=" +
-        this.Window +
-        "|" +
-        "Version=" +
-        this.Version +
-        ":" +
-        this.name +
-        ":" +
-        "runE1App" +
-        "('" +
-        this.id +
-        "','" +
-        this.Window +
-        "','" +
-        this.Version +
-        "')" +
-        "\n";
+      if (this.type == "AppId") {
+        T[i] =
+          "@" +
+          this.options[j] +
+          ":" +
+          this.type +
+          "=" +
+          this.id +
+          "|FormId=" +
+          this.Window +
+          "|" +
+          "Version=" +
+          this.Version +
+          ":" +
+          this.name +
+          ":" +
+          "runE1App" +
+          "('" +
+          this.id +
+          "','" +
+          this.Window +
+          "','" +
+          this.Version +
+          "')" +
+          "\n";
+      } else {
+        T[i] =
+          "@" +
+          this.options[j] +
+          ":" +
+          this.type +
+          "=" +
+          this.id +
+          "|Version=" +
+          this.Version +
+          ":" +
+          this.name +
+          ":" +
+          "runE1App" +
+          "('" +
+          this.id +
+          "','" +
+          "promptForDS" +
+          "','" +
+          this.Version +
+          "')" +
+          "\n";
+      }
+
       this.selectedopt[selectedoptcount] = Object.assign(
         { label: T[i].toString(), value: this.options[j].toString() },
         this.selectedopt[selectedoptcount]
