@@ -3,7 +3,7 @@
 ![Windows 10](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 #
 
-![image](https://user-images.githubusercontent.com/37814393/130219830-84c168d7-652d-4de4-b82f-443319e488f8.png)
+![E1PageGen](https://user-images.githubusercontent.com/37814393/131496781-5cbe24c8-631b-46ff-8667-77d033df0879.png)
 ## Install the dependencies
 ```bash
 npm install
@@ -14,6 +14,7 @@ npm install
 quasar dev -m electron
 ```
 ## ScreenShots
-![E1PageGen](https://user-images.githubusercontent.com/37814393/131496572-ca90bac6-a3c1-4426-91b3-0cc4bf087b5f.png)
-
-
+![image 3](https://user-images.githubusercontent.com/37814393/131496822-e9c87dd0-de43-47d7-823e-726a541c1381.png)
+![image 1](https://user-images.githubusercontent.com/37814393/131496846-a8dd5432-6047-423f-a3e0-e5800cb5eb50.png)
+![image 2](https://user-images.githubusercontent.com/37814393/131496852-0db5dbd2-e963-4fec-8765-05912620a212.png)
+![image 4](https://user-images.githubusercontent.com/37814393/131496864-33a25437-ad4e-4aab-893f-5426c7ab71a9.png)
