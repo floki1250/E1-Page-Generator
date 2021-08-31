@@ -6,6 +6,30 @@
     font-family: "Montserrat", sans-serif;
     overflow: hidden;
 }
+.text-inputField {
+    color: #D8E3E7;
+  }
+  .bg-inputField {
+    background: #D8E3E7;
+  }
+.q-input{
+    width: 100%;padding:10px 0px 10px 0px
+}
+.section{
+    border-radius: 10px;
+    margin-left: 10px;
+    width: 100%;
+    height: 200px;
+    background-color: white;
+    padding: 10px;
+    resize: none;
+    border: 2px;
+    overflow: auto;
+    outline: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
 .file_holder {
     border-radius: 10px;
     margin-left: 10px;
@@ -41,28 +65,22 @@
     background: #ffbb00;
 }
 .widget {
-    background: rgba(255, 255, 255, 0.4);
+    background-color: rgba(#303d8d, 0.5);
     height: 300px;
     margin: 10px;
     border-radius: 20px;
     width: 300px;
     display: flex;
     flex-wrap: wrap;
-    min-width: 300px;
+    
 }
 .widget:hover {
-    transition: 1s;
-    background: #1976d2;
-    box-shadow: 0 0 10px rgba(rgb(187, 187, 187), 0.5);
-    width: 300.5px;
-    height: 300.5px;
-}
-.q-electron-drag:hover {
-    background: #4a5ed9;
+    transition  : 0.5s ease-in-out ;
+    background: #00629b;
+    box-shadow: 0 0 10px rgba(rgb(24, 24, 24), 0.5);
 }
 
 .fluent {
-    background-color: rgba(#303d8d, 0.6);
     box-shadow: 0 0 3px rgba(#000, 0.3);
     backdrop-filter: blur(5px);
 }

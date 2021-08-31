@@ -16,14 +16,15 @@ function createWindow() {
   /**
    * Initial window options
    */
+   
   mainWindow = new BrowserWindow({
     autoHideMenuBar: true,
     frame: true,
-    //transparent: true,
+   // transparent: true,
     minWidth: 400,
-    minHeight: 650,
+    minHeight: 700,
     width: 400,
-    height: 650,
+    height: 700,
     draggable: true,
     backgroundColor: "#0e122b",
     resizable: true,
@@ -39,8 +40,7 @@ function createWindow() {
     }
   })
   // mainWindow.setMenu(null)
- 
-  
+  //setVibrancy(mainWindow,'dark')
   
   mainWindow.loadURL(process.env.APP_URL)
 
