@@ -14,5 +14,6 @@ npm install
 quasar dev -m electron
 ```
 ## ScreenShots
-![E1PageGen](https://user-images.githubusercontent.com/37814393/131496307-93bddd3d-f4e1-467d-a568-f0cc64aab667.png)
+![E1PageGen](https://user-images.githubusercontent.com/37814393/131496572-ca90bac6-a3c1-4426-91b3-0cc4bf087b5f.png)
+
 
