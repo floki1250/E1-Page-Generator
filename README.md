@@ -14,10 +14,5 @@ npm install
 quasar dev -m electron
 ```
 ## ScreenShots
-![image](https://user-images.githubusercontent.com/37814393/130219551-2d84250a-f305-4966-9e40-19441dbc8a4f.png) 
-![image](https://user-images.githubusercontent.com/37814393/130220649-8e721ae2-84f0-406c-b5de-9f0161fa1c60.png) 
-![image](https://user-images.githubusercontent.com/37814393/130220687-f1c6bd20-f113-4ad2-8646-89020e7ab505.png) 
-![image](https://user-images.githubusercontent.com/37814393/130220715-90d9afde-aa51-41f7-8162-45dac1e7a2ff.png) 
-# JDE E1
-![image](https://user-images.githubusercontent.com/37814393/130220934-b97c1c3a-8216-4820-879f-f015b29812f3.png)
-#
+![E1PageGen](https://user-images.githubusercontent.com/37814393/131496307-93bddd3d-f4e1-467d-a568-f0cc64aab667.png)
+
